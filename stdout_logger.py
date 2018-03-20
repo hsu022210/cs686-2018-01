@@ -1,11 +1,13 @@
-class logger:
+from logger import logger
+
+class stdout_logger(logger):
 
 
     """
     Constructor
     """
     def __init__(self, log_level):
-        self.__log_level__ = log_level
+        logger.__init__(self, log_level)
 
 
     """
@@ -14,4 +16,5 @@ class logger:
     the class' threshold. (In this case: does nothing.)
     """
     def log(self, log_level, message):
-        return
+        if self.__log_level__ >= log_level:
+            print(str(log_level) + ":" + message)
